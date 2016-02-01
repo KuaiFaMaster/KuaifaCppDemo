@@ -48,17 +48,16 @@ public class tsDemo extends Cocos2dxActivity{
     
     protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
-        plateformSDK = HJRSDKKitPlateformCore.initHJRPlateform(new SDKKitPlateformCallBackImplWrapper());
+        plateformSDK = HJRSDKKitPlateformCore.initHJRPlateform(this, new SDKKitPlateformCallBackImplWrapper());
         SDKKitPlateformBusinessImplWrapper.setContext(this, plateformSDK, this.mGLSurfaceView);
         SDKKitPlatformCollectionsImplWrapper.setPlateform(plateformSDK, this);
-        plateformSDK.Business.init(this);
         SDKKitPlatformJniHelper.nativeSetContext(this);
 
 	}
     
     @Override
     public void onBackPressed() { 
-    	plateformSDK.Business.exitGame(this);
+    	plateformSDK.Base.exitGame(this);
     }
     
     public Cocos2dxGLSurfaceView onCreateView() {
